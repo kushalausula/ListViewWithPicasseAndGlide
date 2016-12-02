@@ -14,8 +14,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity
 
     Context mContext;
     private ImageView imgView1,imgView2,imgView3;
+    private ListView lvNotes;
 
 
     @Override
@@ -32,10 +37,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        lvNotes=(ListView)findViewById(R.id.lvNotes);
         mContext=this;
-
-
+        prepareNotesInfo();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -55,12 +59,34 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
         imgView=(ImageView)findViewById(R.id.imgView);
         imgView1=(ImageView)findViewById(R.id.imgView1);
         imgView2=(ImageView)findViewById(R.id.imgView2);
         imgView3=(ImageView)findViewById(R.id.imgView3);
+    }
+
+    private void prepareNotesInfo() {
+
+        /*prepare basic notes information here*/
+
+        ArrayList<Notes> notesArrayList=new ArrayList<>();
+
+        for(int i=0;i<10;i++){
+            Notes notes=new Notes();
+            notes.notesTitle="notestitle"+i;
+            notes.notesDescription="notesDescription"+i;
+
+            notesArrayList.add(notes);
+        }
+
+
+        loadAdapter(notesArrayList);
+    }
+
+    private void loadAdapter(ArrayList<Notes> notesArrayList) {
+
+        NotesAdapter notesAdapter=new NotesAdapter(mContext,notesArrayList);
+        lvNotes.setAdapter(notesAdapter);
 
     }
 
@@ -92,17 +118,19 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
 
     void loadImagesWithPicasso(Context context,ImageView imgView,String url){
-        Picasso.with(context)
-                .load(url)
-                .placeholder(R.drawable.ic_android)
-                .error(R.drawable.ic_error_black_24dp)
-                .into(imgView);
+//        Picasso.with(context)
+//                .load(url)
+//                .placeholder(R.drawable.ic_android)
+//                .error(R.drawable.ic_error_black_24dp)
+//                .into(imgView);
+
+        Glide.with(this).load(url).into(imgView);
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -130,4 +158,10 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
+
+
 }

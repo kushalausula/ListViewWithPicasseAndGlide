@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#eeeeee"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Notes Title"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimary"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvNotesTitle"
+        android:text="Notes Title"
+        android:padding="10dp"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notes Description"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimary"
+        />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvNotesDescription"
+        android:text="Notes Description... Hi im in description with large text size with all notes uploaded details"
+        android:padding="10dp"
+        />
+
+</LinearLayout>
