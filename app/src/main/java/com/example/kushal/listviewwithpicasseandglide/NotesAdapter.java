@@ -17,7 +17,6 @@ public class NotesAdapter extends BaseAdapter {
     Context mContext;
     LayoutInflater inflater;
 
-
     public NotesAdapter(Context mContext, ArrayList<Notes> notesArrayList) {
         this.notesArrayList=notesArrayList;
         this.mContext=mContext;

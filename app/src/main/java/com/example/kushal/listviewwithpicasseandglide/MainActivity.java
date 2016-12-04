@@ -63,6 +63,12 @@ public class MainActivity extends AppCompatActivity
         imgView1=(ImageView)findViewById(R.id.imgView1);
         imgView2=(ImageView)findViewById(R.id.imgView2);
         imgView3=(ImageView)findViewById(R.id.imgView3);
+
+
+
+
+
+
     }
 
     private void prepareNotesInfo() {
@@ -75,19 +81,14 @@ public class MainActivity extends AppCompatActivity
             Notes notes=new Notes();
             notes.notesTitle="notestitle"+i;
             notes.notesDescription="notesDescription"+i;
-
             notesArrayList.add(notes);
         }
-
-
         loadAdapter(notesArrayList);
     }
 
-    private void loadAdapter(ArrayList<Notes> notesArrayList) {
-
+     void loadAdapter(ArrayList<Notes> notesArrayList) {
         NotesAdapter notesAdapter=new NotesAdapter(mContext,notesArrayList);
         lvNotes.setAdapter(notesAdapter);
-
     }
 
     @Override
