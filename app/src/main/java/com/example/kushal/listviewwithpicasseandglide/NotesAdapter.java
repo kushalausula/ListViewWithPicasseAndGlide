@@ -22,6 +22,9 @@ public class NotesAdapter extends BaseAdapter {
         this.mContext=mContext;
 
         inflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+
+
     }
 
     @Override
