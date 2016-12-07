@@ -1,6 +1,7 @@
 package com.example.kushal.listviewwithpicasseandglide;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +20,14 @@ public class DummyNotesAdapter extends  BaseAdapter{
     private final LayoutInflater inflater;
 
     ArrayList<Notes> notesArrayList;
+    Context mContext;
+
+
 
     public DummyNotesAdapter(Context mContext, ArrayList<Notes> notesArrayList) {
         this.notesArrayList=notesArrayList;
 
+        this.mContext=mContext;
         inflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
@@ -60,6 +65,15 @@ public class DummyNotesAdapter extends  BaseAdapter{
 
         tvNotesDescription.setText(notesArrayList.get(i).notesDescription);
         tvNOtesTitle.setText(notesArrayList.get(i).notesTitle);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContext.startActivity(new Intent(mContext,RecyclerViewActivity.class));
+            }
+        });
+
+
 
         return view;
     }

@@ -1,6 +1,7 @@
 package com.example.kushal.listviewwithpicasseandglide;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,15 +45,35 @@ public class NotesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-
+/*init part*/
         view=inflater.inflate(R.layout.notes_item,null);
+/**********/
 
 
-        TextView tvNOtesTitle= (TextView) view.findViewById(R.id.tvNotesTitle);
-        TextView tvNotesDescription= (TextView) view.findViewById(R.id.tvNotesDescription);
+       /***** declare views*/
+        TextView tvNOtesTitle;
+        TextView tvNotesDescription;
+
+
+        tvNOtesTitle = (TextView) view.findViewById(R.id.tvNotesTitle);
+        tvNotesDescription = (TextView) view.findViewById(R.id.tvNotesDescription);
+
+        /*************/
+
+        /*assigning values and onlicks*****/
 
         tvNotesDescription.setText(notesArrayList.get(i).notesDescription);
         tvNOtesTitle.setText(notesArrayList.get(i).notesTitle);
+
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContext.startActivity(new Intent(mContext,RecyclerViewActivity.class));
+            }
+        });
+
+        /********************/
 
         return view;
     }
