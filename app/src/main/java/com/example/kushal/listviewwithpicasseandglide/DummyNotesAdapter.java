@@ -11,9 +11,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Pupa on 12/4/2016.
- */
 
 public class DummyNotesAdapter extends  BaseAdapter{
 

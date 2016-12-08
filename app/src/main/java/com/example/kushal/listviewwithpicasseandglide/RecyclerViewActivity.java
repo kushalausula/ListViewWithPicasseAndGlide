@@ -3,8 +3,10 @@ package com.example.kushal.listviewwithpicasseandglide;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -39,10 +41,16 @@ public class RecyclerViewActivity extends AppCompatActivity {
     void loadAdapter(ArrayList<Notes> notesArrayList) {
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(mContext);
         rvData.setLayoutManager(layoutManager);
+        RecyclerView.LayoutManager gridManager=new GridLayoutManager(mContext,2);
+        RecyclerView.LayoutManager stagGridManager=new StaggeredGridLayoutManager(3,1);
 
+        RecyclerView.LayoutManager horizontalLinear=new LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false);
 
-
-        RecyclerAdapter recyclerAdapter=new RecyclerAdapter(mContext,notesArrayList);
+//        rvData.setLayoutManager(layoutManager);
+//        rvData.setLayoutManager(gridManager);
+//        rvData.setLayoutManager(stagGridManager);
+        rvData.setLayoutManager(horizontalLinear);
+        DummyRecyclerAda recyclerAdapter=new DummyRecyclerAda(mContext,notesArrayList);
         rvData.setAdapter(recyclerAdapter);
     }
 }
